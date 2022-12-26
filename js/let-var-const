@@ -1,0 +1,25 @@
+// var a = 100;
+// // block scope-> some variable are block variable and some of the are global variable 
+// {
+//     var a = 10;
+//     let b = 20;
+//     const c = 30;
+//     console.log(a);
+//     console.log(b);
+//     console.log(c);
+// }
+// console.log(a);
+// console.log(b);
+
+
+// below the code create three formate golbal,block and script 
+let b = 10; // this b some under the script block
+{
+    var a = 10;  // var is not a comes under script or block constect script because var is global
+    let b = 20; // but this b comes under the block part console
+    const c = 30;
+    console.log(a);
+    console.log(b);
+    console.log(c);
+}
+console.log(b);
