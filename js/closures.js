@@ -29,5 +29,5 @@ function outter(){
     a = 20;
 } 
 var z = outter();
-// console.log(z);
+// console.log(z+"");
 z();
