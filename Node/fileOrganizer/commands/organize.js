@@ -22,9 +22,23 @@ function organize(srcPath){
     console.log("organizedfile folder path is "+organizedFiles);
     if(fs.existsSync(organizedFiles)==false){
         fs.mkdirSync(organizedFiles); // organizedFiles naam ka folder exist na kre to ak folder bna to warna rhane do
-
+    
     }else{   
         console.log("folder allready exists");
     }
+    // 3. scan the entire srcpath(download folder in this case)
+    // read the content of the directory -> basically read te name of the files present in directory
+       
+    let allFiles = fs.readdirSync(srcPath);
+    console.log(allFiles);
+
+    // 4. traverse over all the files and classify then on the basis of their extension(pdf,mp3)
+
+    for(let i=0;i<allFiles.length;i++){
+        let ext = allFiles[i].split(".")[1];
+        // let ext = path.extname(allFiles[i]);
+        console.log(ext);
+    }
 }
-organize();
+let srcPath = "C:/Users/SANJU/Desktop/GITDEMO/Node/fileOrganizer/download";
+organize(srcPath);
