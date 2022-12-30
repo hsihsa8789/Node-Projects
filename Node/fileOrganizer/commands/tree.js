@@ -31,6 +31,9 @@ function treehelper(targetPath,index){
     }
 
 }
+module.exports = {
+    tree:tree
+}
     
-let sorpath = "C:/Users/SANJU/Desktop/GITDEMO/Node/fileOrganizer/download";
-tree(sorpath);
+// let sorpath = "C:/Users/SANJU/Desktop/GITDEMO/Node/fileOrganizer/download";
+// tree(sorpath);
