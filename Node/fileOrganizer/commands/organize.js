@@ -57,8 +57,8 @@ function organize(srcPath){
         }
     }
 }
-let srcPath = "C:/Users/SANJU/Desktop/GITDEMO/Node/fileOrganizer/download";
-organize(srcPath);
+// let srcPath = "C:/Users/SANJU/Desktop/GITDEMO/Node/fileOrganizer/download";
+// organize(srcPath);
 
 function getFolderName(ext){
     for(let key in types){
@@ -69,6 +69,8 @@ function getFolderName(ext){
             }
         }
     }
+    return "miscellanius";
+
 }
 
 function copyFileToDest(srcPath,fullPathOfFile,folderName){
@@ -88,4 +90,8 @@ function copyFileToDest(srcPath,fullPathOfFile,folderName){
 
     fs.copyFileSync(fullPathOfFile,desFileNmae);
 
+}
+
+module.exports = {
+    organize:organize
 }
