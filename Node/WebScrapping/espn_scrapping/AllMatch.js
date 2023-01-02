@@ -7,7 +7,7 @@ function getAllMatch(url){
 }
 function cb(err,res, body){
     if(err){
-        console.error("error",arr);
+        console.error("error",err);
     }else{
         extractAllMatchLink(body);
     }
@@ -20,7 +20,7 @@ function extractAllMatchLink(html){
     for(let i=0;i<scorecardElemArr.length;i++){
         let scorecardLink = selecTool(scorecardElemArr[i]).attr("href");
         console.log(i+1+")" + scorecardLink);
-        let fullLink = "https://www.espncricinfo.com/" + scorecardLink;
+        let fullLink = "https://www.espncricinfo.com" + scorecardLink;
         gifs(fullLink);
 
     }
@@ -28,5 +28,5 @@ function extractAllMatchLink(html){
 
 
 module.exports={
-    getAllMatch:getAllMatch
-}
+    getAllMatch:getAllMatch,
+};
