@@ -76,9 +76,9 @@ body{
     width: 45vw;
     background-color: lightblue;
     position: absolute;
-    top:calc((100vh-50vh)/2);
-    left:calc((100vw-45vw)/2);
-    display: flex;
+    top:calc((100vh - 50vh)/2);
+    left:calc((100vw - 45vw)/2);
+    display: none;
 }
 
 .textarea-cont{
