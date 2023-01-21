@@ -56,7 +56,7 @@ recordBtnCont.addEventListener("click", () => {
     shouldRecord = !shouldRecord;
 
     if(shouldRecord){
-        // recordBtn.classList.add("scale-record");
+        recordBtn.classList.add("scale-record");
         // recording start
         recorder.start();
         // start timer
@@ -100,11 +100,18 @@ function startTimer(){
 
 }
 
+function stopTimer(){
+    clearInterval(timerID);
+    timer.innerText = "00:00:00";
+    timer.style.display = "none";
+}
+
 
 
 // click photo
 
 captureBtncount.addEventListener("click",() => {
+    captureBtn.classList.add("scale-capture");
     let canvas = document.createElement("canvas");
     let tool = canvas.getContext("2d");
     canvas.width = video.videoWidth;
@@ -122,4 +129,19 @@ captureBtncount.addEventListener("click",() => {
     let img = document.createElement("img");
     img.src = imageURL;
     document.body.append(img);
+
+    setTimeout(() => {
+        captureBtn.classList.remove("scale-capture");
+    }, 510);
+});
+
+// filters add
+
+let filterLayer = document.querySelector(".filter-layer");
+let allFilters = document.querySelector(".filter");
+
+allFilters.forEach((filterElem) => {
+    filterElem.addEventListener("click",() => {
+
+    })
 })

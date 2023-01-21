@@ -115,6 +115,12 @@ video{
     left: 0;
 }
 
+.scale-record{
+    animation-name :scale-record;
+    animation-iteration-count: infinite;
+    animation-duration: 0.5s;
+
+}
 .scale-capture{
     animation-name :scale-capture;
     animation-iteration-count: 1;
@@ -123,6 +129,15 @@ video{
 }
 
 @keyframes scale-capture{
+    0%{
+        transform: scale(0.8);
+    }
+
+    100%{
+        transform: scale(1.2);
+    }
+}
+@keyframes scale-record{
     0%{
         transform: scale(0.8);
     }
