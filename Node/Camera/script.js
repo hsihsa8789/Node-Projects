@@ -1,3 +1,9 @@
+let gallery = document.querySelector(".gallery");
+gallery.addEventListener("click",() => {
+    location.assign("./gallery.html");
+});
+
+var uid = new ShortUniqueId();
 let video = document.querySelector("video");
 let captureBtncount = document.querySelector("capture-btn-cont");
 let captureBtn = document.querySelector(".capture-btn");
@@ -40,11 +46,26 @@ navigator.mediaDevices.getUserMedia(constraints)
         let videoURL = URL.createObjectURL(blob);
         console.log(videoURL);
         
-        let a = document.createElement("a");
-        a.href = videoURL;
-        a.download = "myVideo.mp4";
-        a.click();
+        // let a = document.createElement("a");
+        // a.href = videoURL;
+        // a.download = "myVideo.mp4";
+        // a.click();
         // store in database
+
+        if(db){
+            let videoId = uid();
+    
+            let dbTransaction = db.transaction("video","readwrite");
+            let videoStore = dbTransaction.objectStore("video");
+            let videoEntry = {
+                id: `vid-${videoId}`,
+                url: blob,
+            };
+            let addRequest = videoStore.add(videoEntry);
+            addRequest.onsuccess=() =>{
+                console.log("video added to db successfully");
+            }
+        }
 
 
     })
@@ -125,15 +146,39 @@ captureBtncount.addEventListener("click",() => {
     tool.fillRect(0,0,canvas.width,canvas.height);
      
 
-    let imageURL = canvas.toDataURL();
-    let img = document.createElement("img");
-    img.src = imageURL;
-    document.body.append(img);
+    // let imageURL = canvas.toDataURL();
+    // let img = document.createElement("img");
+    // img.src = imageURL;
+    // document.body.append(img);
+
+    // store in database
+
+    if(db){
+        let imageId = uid();
+
+        let dbTransaction = db.transaction("image","readwrite");
+        let imageStore = dbTransaction.objectStore("image");
+        let imageEntry = {
+            id: `img-${imageId}`,
+            url: imageURL,
+        };
+        let addRequest = imageStore.add(imageEntry);
+        addRequest.onsuccess=() =>{
+            console.log("image added to db successfully");
+        }
+    }
 
     setTimeout(() => {
         captureBtn.classList.remove("scale-capture");
     }, 510);
 });
+
+function stopTimer(){
+    clearInterval(timerID);
+    timer.innerText = "00:00:00";
+    timer.style.display = "none";
+
+}
 
 // filters add
 
@@ -142,6 +187,10 @@ let allFilters = document.querySelector(".filter");
 
 allFilters.forEach((filterElem) => {
     filterElem.addEventListener("click",() => {
+        transparentColor = 
+        getComputedStyle(filterElem).getPropertyValue("background-color");
+        filterLayer.style.backgroundColor = transparentColor;
+
 
     })
 })

@@ -88,6 +88,7 @@ video{
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
+    background-blend-mode: color-burn;
 }
 
 .orange{
@@ -134,7 +135,7 @@ video{
     }
 
     100%{
-        transform: scale(1.2);
+        transform: scale(1.1);
     }
 }
 @keyframes scale-record{
@@ -143,7 +144,7 @@ video{
     }
 
     100%{
-        transform: scale(1.2);
+        transform: scale(1.1);
     }
 }
 
@@ -158,4 +159,8 @@ video{
     bottom: 4rem;
     right: 6rem;
     z-index: 2;
+}
+
+.gallery:hover{
+    cursor: pointer;
 }
