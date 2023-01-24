@@ -60,9 +60,9 @@ let area = function(a){
     return a*a;
 }
 
-let parimeter = function(a){
-    return 4*a;
-}
+// let parimeter = function(a){
+//     return 4*a;
+// }
 
 let calculate = function(arr,logic){
     let res = [];
@@ -78,9 +78,9 @@ let calculate = function(arr,logic){
 // map
 // write a code to calculate thebarwa of square
 
-let res = arr.map((a) =>  {
-    return a*a;
-})
+// let res = arr.map((a) =>  {
+//     return a*a;
+// })
 
 // console.log(res);
 
@@ -118,14 +118,107 @@ let res = arr.map((a) =>  {
 
 // write a code to calculate largest element in arr
 
-const array = [-2,-5,-8,-6,-78];
+// const array = [-2,-5,-8,-6,-78];
 
-function largestElement(max,cur){
-    if(cur>max){
-        max = cur;
-    }
-    return max;
+// function largestElement(max,cur){
+//     if(cur>max){
+//         max = cur;
+//     }
+//     return max;
+// }
+
+// let ans = array.reduce(largestElement,-Infinity);
+// console.log(ans);
+
+var users = [
+    {firstName: "Mayank", lastName: "Singh", age: 55},
+    {firstName: "Jyoti", lastName: "Jauhari", age: 25},
+    {firstName: "Saket", lastName: "Bharti", age: 15},
+    
+];
+
+// write a code to get fullname of all the users
+// outer-> ["Mayank Singh","Jyoti Jauhari", "Saket Bharti"]
+
+function getFullName(obj) {
+    return obj.firstName + " " + obj.lastName;
 }
 
-let ans = array.reduce(largestElement,-Infinity);
+var ans1  = users.map(getFullName)
+console.log(ans1);
+
+console.log(users.map((obj)=> obj.firstName +" "+obj.lastName));
+
+// write a code to  return the number of peoplewith a particular  age
+// output->{55:1,25:1,15:1}
+// "bees in the knees"
+
+function peopleAge(robj,cobj){
+    let age = cobj.age;
+    if(robj[age]){
+        robj[age] = robj[age]+1;
+
+    }
+    else{
+        robj[age] = 1;
+    }
+    return robj;
+}
+
+var obj = users.reduce(peopleAge, {});
+console.log(obj);
+
+// write a code to get firstName of all the users with age less than 30
+// output-> ["Jyoti Jauhani","Saket Bharti"]
+
+// hint : map and filter use hoge
+
+var ans = users.filter((obj)=>obj.age<30);
 console.log(ans);
+
+var ans = ans.map(getFullName);
+
+console.log(ans);
+
+console.log(users.filter((obj)=>obj.age<30).map(getFullName));
+
+// using reduce 
+
+function getPeopleLessThan30(arr,obj){
+    if(obj.age<30){
+        arr.push(obj.firstName+""+obj.lastName);
+    }
+    return arr;
+}
+
+var ans=users.reduce(getPeopleLessThan30,[]);
+console.log(ans);
+
+console.log(calculate(arr,area));
+// console.log(arr.calculate(area));
+console.log(arr.map(area));
+
+
+// implementation of own map
+
+Array.prototype.myMap = function(logic){
+    let res = [];
+    for(let i=0;i<this.length;i++){
+        res.push(logic(this[i]));
+    }
+    return res;
+}
+
+var narr = [1,2,3,4];
+var ans = narr.myMap(area);
+
+console.log(ans);
+
+var ans = narr.myMap(function (num){
+    return num*3;
+})
+console.log(ans);
+
+Array.prototype.mySize = 8;
+console.log(narr.mySize);
+
